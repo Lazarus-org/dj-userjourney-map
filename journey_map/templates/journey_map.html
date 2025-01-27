@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Journey Map - {{ journey_data.journey.name }}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css for additional animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #007bff;
+            width: 0;
+            transition: width 0.5s ease;
+        }
+        .stage-card {
+            margin-bottom: 30px;
+            border: none;
+            border-radius: 12px;
+            padding: 20px;
+            background: linear-gradient(145deg, #ffffff, #f1f1f1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .action-card {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background-color: #fff;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .action-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .feedback-card {
+            margin-top: 10px;
+            padding: 10px;
+            border-left: 3px solid #28a745;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            transition: opacity 0.3s ease;
+        }
+        .feedback-card:hover {
+            opacity: 0.9;
+        }
+        .feedback-positive {
+            color: #28a745;
+        }
+        .feedback-negative {
+            color: #dc3545;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #007bff;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+        .stage-card {
+            position: relative;
+            width: 45%;
+            margin-bottom: 50px;
+        }
+        .stage-card.left {
+            left: 0;
+        }
+        .stage-card.right {
+            left: 55%;
+        }
+        .stage-card::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+            border: 4px solid #fff;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .stage-card.left::after {
+            right: -10px;
+        }
+        .stage-card.right::after {
+            left: -10px;
+        }
+        .stage-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #007bff;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .collapsible {
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .collapsible:hover {
+            background-color: #ddd;
+        }
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 animate__animated animate__fadeInDown">{{ journey_data.journey.name }}</h1>
+        <p class="text-center mb-5 animate__animated animate__fadeIn animate__delay-1s">{{ journey_data.journey.description }}</p>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+            {% for stage in journey_data.stages %}
+                <div class="stage-card {% cycle 'left' 'right' %} animate__animated animate__fadeInUp">
+                    <button class="collapsible">
+                        <i class="fas fa-map-marker-alt stage-icon"></i>
+                        {{ stage.stage.stage_name }}
+                    </button>
+                    <div class="content">
+                        {% for action in stage.actions %}
+                            <div class="action-card">
+                                <h5>
+                                    <i class="fas fa-check-circle stage-icon"></i>
+                                    {{ action.action.action_description }}
+                                </h5>
+                                {% for feedback in action.feedbacks %}
+                                    <div class="feedback-card">
+                                        <p class="{% if feedback.is_positive %}feedback-positive{% else %}feedback-negative{% endif %}">
+                                            <i class="fas fa-comment-dots"></i>
+                                            {{ feedback.feedback_text }}
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // GSAP animations for stage cards
+        gsap.from(".stage-card", {
+            duration: 1,
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            ease: "power2.out",
+        });
+
+        // GSAP animations for action cards
+        gsap.from(".action-card", {
+            duration: 0.8,
+            opacity: 0,
+            x: -50,
+            stagger: 0.1,
+            ease: "power2.out",
+            delay: 1,
+        });
+
+        // GSAP animations for feedback cards
+        gsap.from(".feedback-card", {
+            duration: 0.5,
+            opacity: 0,
+            y: 20,
+            stagger: 0.05,
+            ease: "power2.out",
+            delay: 1.5,
+        });
+
+        // Progress Bar Animation
+        const progressBar = document.getElementById('progressBar');
+        gsap.to(progressBar, {
+            width: '100%',
+            duration: 2,
+            ease: 'power2.out',
+            delay: 0.5,
+        });
+
+        // Collapsible functionality
+        const collapsibles = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < collapsibles.length; i++) {
+            collapsibles[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
