@@ -10,6 +10,7 @@ from journey_map.settings.conf import config
 class OpportunityAdmin(BaseModelAdmin):
     list_display = ("truncated_description", "action_description", "journey_name")
     list_select_related = ("action__stage__journey",)
+    list_filter = ("action__order",)
     search_fields = ("description", "action__action_description")
 
     def truncated_description(self, obj):

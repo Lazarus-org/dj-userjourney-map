@@ -14,7 +14,7 @@ class PainPointAdmin(BaseModelAdmin):
         "action_description",
         "journey_name",
     )
-    list_filter = ("severity", "action__stage__journey")
+    list_filter = ("severity", "action__order")
     list_select_related = ("action__stage__journey",)
     search_fields = ("description", "action__action_description")
 
