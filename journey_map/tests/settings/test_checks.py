@@ -545,8 +545,8 @@ class TestJourneyMapSettings:
 
         errors = check_journey_map_settings(None)
         assert (
-            len(errors) == 17
-        ), f"Expected 17 errors for invalid paths, but got {len(errors)}"
+            len(errors) == 18
+        ), f"Expected 18 errors for invalid paths, but got {len(errors)}"
         error_ids = [error.id for error in errors]
         expected_ids = [
             f"journey_map.E011_{mock_config.prefix}API_THROTTLE_CLASSES",
@@ -566,6 +566,7 @@ class TestJourneyMapSettings:
             f"journey_map.E010_{mock_config.prefix}API_PAIN_POINT_FILTERSET_CLASS",
             f"journey_map.E010_{mock_config.prefix}API_OPPORTUNITY_SERIALIZER_CLASS",
             f"journey_map.E010_{mock_config.prefix}API_OPPORTUNITY_FILTERSET_CLASS",
+            f"journey_map.E010_{mock_config.prefix}VIEW_PERMISSION_CLASS",
         ]
         assert all(
             eid in error_ids for eid in expected_ids

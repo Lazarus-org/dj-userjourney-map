@@ -9,7 +9,7 @@ from .admin import (
     pain_point_admin,
     opportunity_admin,
 )
-from .views import api_client
+from .views import api_client, view
 from .models import (
     user_journey,
     journey_stage,
