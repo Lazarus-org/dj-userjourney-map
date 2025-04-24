@@ -100,6 +100,11 @@ class DefaultOpportunityAPISettings:
     search_fields: List[str] = field(default_factory=lambda: ["description"])
 
 
+@dataclass(frozen=True)
+class DefaultViewSettings:
+    permission_class: Optional[str] = "journey_map.permissions.IsAuthenticated"
+
+
 admin_settings: DefaultAdminSettings = DefaultAdminSettings()
 serializer_settings = DefaultSerializerSettings()
 throttle_settings = DefaultThrottleSettings()
@@ -110,3 +115,4 @@ journey_action_api_settings = DefaultJourneyActionAPISettings()
 pain_point_api_settings = DefaultPainPointAPISettings()
 opportunity_api_settings = DefaultOpportunityAPISettings()
 user_feedback_api_settings = DefaultUserFeedbackAPISettings()
+view_settings = DefaultViewSettings()
