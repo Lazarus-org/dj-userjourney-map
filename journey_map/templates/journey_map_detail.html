@@ -59,15 +59,25 @@
             transform: translateX(10px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .feedback-card {
+        .feedback-card, .pain-point-card, .opportunity-card {
             margin-top: 10px;
             padding: 10px;
-            border-left: 3px solid #28a745;
-            background-color: #f8f9fa;
             border-radius: 6px;
             transition: opacity 0.3s ease;
         }
-        .feedback-card:hover {
+        .feedback-card {
+            border-left: 3px solid #28a745;
+            background-color: #f8f9fa;
+        }
+        .pain-point-card {
+            border-left: 3px solid #dc3545;
+            background-color: #fff1f1;
+        }
+        .opportunity-card {
+            border-left: 3px solid #ffc107;
+            background-color: #fff8e1;
+        }
+        .feedback-card:hover, .pain-point-card:hover, .opportunity-card:hover {
             opacity: 0.9;
         }
         .feedback-positive {
@@ -174,12 +184,32 @@
             background-color: #f9f9f9;
             border-radius: 8px;
         }
+        .persona-section {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container mt-5">
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'journey_map_list' %}">Journeys</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ journey_data.journey.name }}</li>
+            </ol>
+        </nav>
+
         <h1 class="text-center mb-4 animate__animated animate__fadeInDown">{{ journey_data.journey.name }}</h1>
-        <p class="text-center mb-5 animate__animated animate__fadeIn animate__delay-1s">{{ journey_data.journey.description }}</p>
+        <p class="text-center mb-4 animate__animated animate__fadeIn animate__delay-1s">{{ journey_data.journey.description }}</p>
+
+        <!-- Persona Information -->
+        <div class="persona-section animate__animated animate__fadeIn animate__delay-1s">
+            <h4><i class="fas fa-user stage-icon"></i>Persona: {{ journey_data.persona.persona_name }}</h4>
+            <p>{{ journey_data.persona.description|truncatewords:30 }}</p>
+        </div>
 
         <!-- Progress Bar -->
         <div class="progress-bar-container">
@@ -205,7 +235,23 @@
                                     <div class="feedback-card">
                                         <p class="{% if feedback.is_positive %}feedback-positive{% else %}feedback-negative{% endif %}">
                                             <i class="fas fa-comment-dots"></i>
-                                            {{ feedback.feedback_text }}
+                                            {{ feedback.feedback_text }} (Emotion: {{ feedback.emotion }}, Intensity: {{ feedback.intensity }})
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                                {% for pain_point in action.pain_points %}
+                                    <div class="pain-point-card">
+                                        <p>
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                            {{ pain_point.description }} (Severity: {{ pain_point.severity }})
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                                {% for opportunity in action.opportunities %}
+                                    <div class="opportunity-card">
+                                        <p>
+                                            <i class="fas fa-lightbulb"></i>
+                                            {{ opportunity.description }}
                                         </p>
                                     </div>
                                 {% endfor %}
@@ -239,14 +285,23 @@
             delay: 1,
         });
 
-        // GSAP animations for feedback cards
-        gsap.from(".feedback-card", {
+        // GSAP animations for feedback, pain point, and opportunity cards
+        gsap.from(".feedback-card, .pain-point-card, .opportunity-card", {
             duration: 0.5,
             opacity: 0,
             y: 20,
             stagger: 0.05,
             ease: "power2.out",
             delay: 1.5,
+        });
+
+        // GSAP animation for persona section
+        gsap.from(".persona-section", {
+            duration: 1,
+            opacity: 0,
+            y: 20,
+            ease: "power2.out",
+            delay: 0.5,
         });
 
         // Progress Bar Animation
