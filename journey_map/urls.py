@@ -1,6 +1,13 @@
 from django.urls import path
-from .views import journey_map
+
+from journey_map.views import JourneyMapDetailView, JourneyMapListView
+
 
 urlpatterns = [
-    path('journey/<int:journey_id>/', journey_map, name='journey_map'),
+    path("journeys/", JourneyMapListView.as_view(), name="journey_map_list"),
+    path(
+        "journeys/<int:journey_id>/",
+        JourneyMapDetailView.as_view(),
+        name="journey_map_detail",
+    ),
 ]

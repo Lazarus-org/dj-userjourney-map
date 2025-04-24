@@ -7,6 +7,7 @@ from journey_map.tests.fixtures import (
     request_factory,
     mock_request,
     api_client,
+    view,
     user_journey_admin,
     journey_action_admin,
     opportunity_admin,

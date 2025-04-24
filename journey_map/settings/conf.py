@@ -5,15 +5,16 @@ from django.utils.module_loading import import_string
 
 from journey_map.constants.default_settings import (
     admin_settings,
-    serializer_settings,
-    throttle_settings,
     api_settings,
-    user_journey_api_settings,
+    journey_action_api_settings,
+    journey_stage_api_settings,
     opportunity_api_settings,
     pain_point_api_settings,
+    serializer_settings,
+    throttle_settings,
     user_feedback_api_settings,
-    journey_stage_api_settings,
-    journey_action_api_settings,
+    user_journey_api_settings,
+    view_settings,
 )
 from journey_map.constants.types import DefaultPath, OptionalPaths
 
@@ -21,15 +22,13 @@ from journey_map.constants.types import DefaultPath, OptionalPaths
 class JourneyMapConfig:
     """A configuration handler for the Django UserJourney Map, allowing
     settings to be dynamically loaded from Django settings with defaults
-    provided through Default Settings.
-
-    """
+    provided through Default Settings."""
 
     prefix = "JOURNEY_MAP_"
 
     def __init__(self) -> None:
-        """Initialize the Config, loading values from Django
-        settings or falling back to the default settings."""
+        """Initialize the Config, loading values from Django settings or
+        falling back to the default settings."""
 
         # Admin settings (global)
         self.admin_has_add_permission: bool = self.get_setting(
@@ -328,6 +327,12 @@ class JourneyMapConfig:
         self.api_opportunity_allow_delete: bool = self.get_setting(
             f"{self.prefix}API_OPPORTUNITY_ALLOW_DELETE",
             api_settings.allow_delete,
+        )
+
+        # Template View settings
+        self.view_permission_class: OptionalPaths = self.get_optional_paths(
+            f"{self.prefix}VIEW_PERMISSION_CLASS",
+            view_settings.permission_class,
         )
 
     def get_setting(self, setting_name: str, default_value: Any) -> Any:

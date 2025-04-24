@@ -31,6 +31,7 @@ def check_journey_map_settings(app_configs: Any, **kwargs: Any) -> List[Error]:
     --------
     List[Error]
         A list of `Error` objects for any detected configuration issues.
+
     """
     errors: List[Error] = []
 
@@ -479,6 +480,14 @@ def check_journey_map_settings(app_configs: Any, **kwargs: Any) -> List[Error]:
         validate_boolean_setting(
             config.api_opportunity_allow_delete,
             f"{config.prefix}API_OPPORTUNITY_ALLOW_DELETE",
+        )
+    )
+
+    # Validate Template View settings
+    errors.extend(
+        validate_optional_path_setting(
+            config.get_setting(f"{config.prefix}VIEW_PERMISSION_CLASS", None),
+            f"{config.prefix}VIEW_PERMISSION_CLASS",
         )
     )
 

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Journey Maps</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .journey-card {
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 12px;
+            padding: 20px;
+            background: linear-gradient(145deg, #ffffff, #f1f1f1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .journey-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .journey-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #007bff;
+        }
+        .btn-view {
+            transition: background-color 0.3s ease;
+        }
+        .btn-view:hover {
+            background-color: #0056b3;
+        }
+        .persona-info {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 animate__animated animate__fadeInDown">User Journey Maps</h1>
+        <p class="text-center mb-5 animate__animated animate__fadeIn animate__delay-1s">
+            Select a journey to view its detailed map.
+        </p>
+
+        <div class="row">
+            {% for journey in journeys %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="journey-card animate__animated animate__fadeInUp">
+                        <h4>
+                            <i class="fas fa-map stage-icon"></i>
+                            {{ journey.name }}
+                        </h4>
+                        <p>{{ journey.description|truncatewords:20 }}</p>
+                        <p class="persona-info">
+                            <i class="fas fa-user"></i>
+                            Persona: {{ journey.persona.persona_name }}
+                        </p>
+                        <a href="{% url 'journey_map_detail' journey_id=journey.id %}" class="btn btn-primary btn-view">
+                            View Journey
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p class="text-muted">No user journeys available.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // GSAP animations for journey cards
+        gsap.from(".journey-card", {
+            duration: 1,
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            ease: "power2.out",
+        });
+    </script>
+</body>
+</html>
