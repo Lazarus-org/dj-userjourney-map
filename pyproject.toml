@@ -8,7 +8,7 @@ name = "dj-userjourney-map"
 version = "1.0.0"
 description = ""
 readme = "README.md"
-keywords = [ "journey", "journey map", "journeymap", "django", "django user journey map", "user" ]
+keywords = [ "django", "django user journey map", "journey", "journey map", "journeymap", "user" ]
 
 license = { text = "MIT" }
 authors = [
@@ -196,6 +196,7 @@ markers = [
   "settings_checks: Marks tests for settings validation, ensuring that required settings are correctly configured.",
   "validators: Marks tests for custom validators used throughout the project.",
   "config_validators: Marks tests for configuration validators that validate the config values in project settings.",
+  "permissions: Marks tests for permission classes that used in project."
 ]
 
 norecursedirs = [
