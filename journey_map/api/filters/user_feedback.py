@@ -1,10 +1,12 @@
 import django_filters
-from journey_map.models import UserFeedback
 from django.utils.translation import gettext_lazy as _
+
+from journey_map.models import UserFeedback
 
 
 class UserFeedbackFilter(django_filters.FilterSet):
-    """FilterSet for the UserFeedback model, allowing filtering by feedback text, emotion, intensity, and action."""
+    """FilterSet for the UserFeedback model, allowing filtering by feedback
+    text, emotion, intensity, and action."""
 
     feedback_text = django_filters.CharFilter(
         lookup_expr="icontains",

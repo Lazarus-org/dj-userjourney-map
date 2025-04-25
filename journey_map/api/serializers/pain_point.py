@@ -1,6 +1,7 @@
-from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
-from journey_map.models import PainPoint, JourneyAction
+from rest_framework import serializers
+
+from journey_map.models import JourneyAction, PainPoint
 
 
 class PainPointSerializer(serializers.ModelSerializer):
@@ -25,7 +26,8 @@ class PainPointSerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "action"]
 
     def validate_action_id(self, value):
-        """Validate that the action_id corresponds to an existing JourneyAction."""
+        """Validate that the action_id corresponds to an existing
+        JourneyAction."""
         try:
             JourneyAction.objects.get(id=value)
         except JourneyAction.DoesNotExist:
@@ -41,7 +43,8 @@ class PainPointSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
-        """Update a PainPoint instance, mapping action_id to action if provided."""
+        """Update a PainPoint instance, mapping action_id to action if
+        provided."""
         action_id = validated_data.pop("action_id", None)
         if action_id is not None:
             validated_data["action"] = JourneyAction.objects.get(id=action_id)

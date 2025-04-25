@@ -1,10 +1,10 @@
 from journey_map.mixins.admin.inlines import BaseTabularInline
 from journey_map.models import (
-    JourneyStage,
     JourneyAction,
-    UserFeedback,
+    JourneyStage,
     Opportunity,
     PainPoint,
+    UserFeedback,
 )
 
 

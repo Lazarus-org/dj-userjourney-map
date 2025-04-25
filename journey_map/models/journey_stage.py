@@ -5,9 +5,9 @@ from journey_map.models.user_journey import UserJourney
 
 
 class JourneyStage(models.Model):
-    """
-    Represents a stage within a user journey, defining a distinct phase in the user's experience,
-    such as 'Awareness' or 'Decision'. Stages are ordered to reflect the sequence of the journey.
+    """Represents a stage within a user journey, defining a distinct phase in
+    the user's experience, such as 'Awareness' or 'Decision'. Stages are
+    ordered to reflect the sequence of the journey.
 
     Attributes:
         journey (UserJourney): The user journey this stage belongs to.
@@ -16,6 +16,7 @@ class JourneyStage(models.Model):
 
     Example:
         In a journey for purchasing a product, stages might include 'Explore', 'Compare', and 'Purchase'.
+
     """
 
     journey = models.ForeignKey(
@@ -48,4 +49,4 @@ class JourneyStage(models.Model):
         verbose_name_plural = _("Journey Stages")
 
     def __str__(self):
-        return f"Journey ID({self.journey_id}) - {self.stage_name}"
+        return f"Journey ({self.journey_id}) - {self.stage_name}"

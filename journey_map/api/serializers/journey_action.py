@@ -1,13 +1,15 @@
-from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
-from journey_map.models import JourneyAction, JourneyStage
-from journey_map.api.serializers.user_feedback import UserFeedbackSerializer
-from journey_map.api.serializers.pain_point import PainPointSerializer
+from rest_framework import serializers
+
 from journey_map.api.serializers.opportunity import OpportunitySerializer
+from journey_map.api.serializers.pain_point import PainPointSerializer
+from journey_map.api.serializers.user_feedback import UserFeedbackSerializer
+from journey_map.models import JourneyAction, JourneyStage
 
 
 class JourneyActionSerializer(serializers.ModelSerializer):
-    """Serializer for the JourneyAction model, including nested feedback, pain points, and opportunities."""
+    """Serializer for the JourneyAction model, including nested feedback, pain
+    points, and opportunities."""
 
     stage_id = serializers.IntegerField(
         write_only=True,
@@ -35,7 +37,8 @@ class JourneyActionSerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "stage", "feedbacks", "pain_points", "opportunities"]
 
     def validate_stage_id(self, value):
-        """Validate that the stage_id corresponds to an existing JourneyStage."""
+        """Validate that the stage_id corresponds to an existing
+        JourneyStage."""
         try:
             JourneyStage.objects.get(id=value)
         except JourneyStage.DoesNotExist:
@@ -51,7 +54,8 @@ class JourneyActionSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
-        """Update a JourneyAction instance, mapping stage_id to stage if provided."""
+        """Update a JourneyAction instance, mapping stage_id to stage if
+        provided."""
         stage_id = validated_data.pop("stage_id", None)
         if stage_id is not None:
             validated_data["stage"] = JourneyStage.objects.get(id=stage_id)

@@ -2,9 +2,9 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
 from journey_map.admin.inlines import (
-    UserFeedbackInline,
-    PainPointInline,
     OpportunityInline,
+    PainPointInline,
+    UserFeedbackInline,
 )
 from journey_map.mixins.admin.base import BaseModelAdmin
 from journey_map.models import JourneyAction
@@ -18,7 +18,11 @@ class JourneyActionAdmin(BaseModelAdmin):
     list_select_related = ("stage__journey",)
     search_fields = ("action_description", "touchpoint", "stage__stage_name")
     autocomplete_fields = ("stage",)
-    inlines = [UserFeedbackInline, PainPointInline, OpportunityInline] if config.admin_include_inlines else []
+    inlines = (
+        [UserFeedbackInline, PainPointInline, OpportunityInline]
+        if config.admin_include_inlines
+        else []
+    )
 
     def truncated_description(self, obj):
         return (

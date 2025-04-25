@@ -17,6 +17,7 @@ class UserFeedbackAdmin(BaseModelAdmin):
     )
     list_filter = ("is_positive", "emotion", "action__stage__journey")
     list_select_related = ("action",)
+    autocomplete_fields = ("action",)
     search_fields = ("feedback_text", "action__action_description")
 
     def truncated_feedback(self, obj):

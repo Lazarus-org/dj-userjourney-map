@@ -5,9 +5,9 @@ from journey_map.models.journey_action import JourneyAction
 
 
 class PainPoint(models.Model):
-    """
-    Represents a pain point or issue encountered by the user during a specific action.
-    Pain points are used to identify areas for improvement in the user journey.
+    """Represents a pain point or issue encountered by the user during a
+    specific action. Pain points are used to identify areas for improvement in
+    the user journey.
 
     Attributes:
         action (JourneyAction): The action where the pain point occurs.
@@ -16,6 +16,7 @@ class PainPoint(models.Model):
 
     Example:
         A pain point might be 'Unclear error message' with severity 3.
+
     """
 
     action = models.ForeignKey(

@@ -1,4 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
+
 from journey_map.api.serializers.helper.get_serializer_cls import (
     opportunity_serializer_class,
 )

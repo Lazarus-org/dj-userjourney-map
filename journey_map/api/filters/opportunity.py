@@ -1,10 +1,12 @@
 import django_filters
-from journey_map.models import Opportunity
 from django.utils.translation import gettext_lazy as _
+
+from journey_map.models import Opportunity
 
 
 class OpportunityFilter(django_filters.FilterSet):
-    """FilterSet for the Opportunity model, allowing filtering by description and action."""
+    """FilterSet for the Opportunity model, allowing filtering by description
+    and action."""
 
     description = django_filters.CharFilter(
         lookup_expr="icontains",

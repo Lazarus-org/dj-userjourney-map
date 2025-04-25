@@ -1,6 +1,7 @@
-from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
-from journey_map.models import Opportunity, JourneyAction
+from rest_framework import serializers
+
+from journey_map.models import JourneyAction, Opportunity
 
 
 class OpportunitySerializer(serializers.ModelSerializer):
@@ -24,7 +25,8 @@ class OpportunitySerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "action"]
 
     def validate_action_id(self, value):
-        """Validate that the action_id corresponds to an existing JourneyAction."""
+        """Validate that the action_id corresponds to an existing
+        JourneyAction."""
         try:
             JourneyAction.objects.get(id=value)
         except JourneyAction.DoesNotExist:
@@ -40,7 +42,8 @@ class OpportunitySerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
-        """Update an Opportunity instance, mapping action_id to action if provided."""
+        """Update an Opportunity instance, mapping action_id to action if
+        provided."""
         action_id = validated_data.pop("action_id", None)
         if action_id is not None:
             validated_data["action"] = JourneyAction.objects.get(id=action_id)

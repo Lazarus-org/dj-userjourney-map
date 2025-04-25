@@ -1,10 +1,12 @@
 import django_filters
-from journey_map.models import JourneyStage
 from django.utils.translation import gettext_lazy as _
+
+from journey_map.models import JourneyStage
 
 
 class JourneyStageFilter(django_filters.FilterSet):
-    """FilterSet for the JourneyStage model, allowing filtering by stage name, journey, and order."""
+    """FilterSet for the JourneyStage model, allowing filtering by stage name,
+    journey, and order."""
 
     stage_name = django_filters.CharFilter(
         lookup_expr="icontains", help_text=_("Filter by stage name (case-insensitive).")

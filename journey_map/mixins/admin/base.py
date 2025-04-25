@@ -3,9 +3,7 @@ from django.contrib.admin import ModelAdmin
 from journey_map.mixins.admin.permission import AdminPermissionControlMixin
 
 
-class BaseModelAdmin(
-    AdminPermissionControlMixin, ModelAdmin
-):
+class BaseModelAdmin(AdminPermissionControlMixin, ModelAdmin):
     """Base class for all ModelAdmin classes in the Django admin interface.
 
     This class provides common functionalities that can be reused across

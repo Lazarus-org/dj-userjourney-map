@@ -1,13 +1,14 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
 from journey_map.models.helper.eums.emotion_choices import EmotionChoices
 from journey_map.models.journey_action import JourneyAction
 
 
 class UserFeedback(models.Model):
-    """
-    Captures user feedback or emotions associated with a specific action in the journey.
-    Feedback includes the emotional state, intensity, and whether it’s positive or negative.
+    """Captures user feedback or emotions associated with a specific action in
+    the journey. Feedback includes the emotional state, intensity, and whether
+    it’s positive or negative.
 
     Attributes:
         action (JourneyAction): The action this feedback is tied to.
@@ -19,6 +20,7 @@ class UserFeedback(models.Model):
 
     Example:
         Feedback might be 'I like that I can save cars' with emotion 'Happy' and intensity 4.
+
     """
 
     action = models.ForeignKey(
