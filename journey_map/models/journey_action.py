@@ -1,12 +1,13 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
 from journey_map.models.journey_stage import JourneyStage
 
 
 class JourneyAction(models.Model):
-    """
-    Represents a specific action a user takes within a journey stage, such as clicking a button
-    or submitting a form. Actions are tied to touchpoints and ordered within their stage.
+    """Represents a specific action a user takes within a journey stage, such
+    as clicking a button or submitting a form. Actions are tied to touchpoints
+    and ordered within their stage.
 
     Attributes:
         stage (JourneyStage): The stage this action belongs to.
@@ -16,6 +17,7 @@ class JourneyAction(models.Model):
 
     Example:
         An action might be 'Clicks the Sign Up button' with a touchpoint of 'Sign-up button'.
+
     """
 
     stage = models.ForeignKey(

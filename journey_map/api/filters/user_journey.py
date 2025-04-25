@@ -1,13 +1,16 @@
 import django_filters
-from journey_map.models import UserJourney
 from django.utils.translation import gettext_lazy as _
+
+from journey_map.models import UserJourney
 
 
 class UserJourneyFilter(django_filters.FilterSet):
-    """FilterSet for the UserJourney model, allowing filtering by name, description, and persona."""
+    """FilterSet for the UserJourney model, allowing filtering by name,
+    description, and persona."""
 
     name = django_filters.CharFilter(
-        lookup_expr="icontains", help_text=_("Filter by journey name (case-insensitive).")
+        lookup_expr="icontains",
+        help_text=_("Filter by journey name (case-insensitive)."),
     )
     description = django_filters.CharFilter(
         lookup_expr="icontains",

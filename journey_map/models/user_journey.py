@@ -4,9 +4,9 @@ from persona_manager.models import UserPersona
 
 
 class UserJourney(models.Model):
-    """
-    Represents a user journey map, which outlines the overall path a user takes to achieve a goal
-    within a software application. It serves as the root model for stages, actions, and feedback.
+    """Represents a user journey map, which outlines the overall path a user
+    takes to achieve a goal within a software application. It serves as the
+    root model for stages, actions, and feedback.
 
     Attributes:
         name (str): The name of the user journey.
@@ -18,6 +18,7 @@ class UserJourney(models.Model):
     Example:
         A journey named "New User Onboarding" might describe how a persona signs up and
         starts using a project management tool.
+
     """
 
     name = models.CharField(

@@ -16,6 +16,7 @@ class PainPointAdmin(BaseModelAdmin):
     )
     list_filter = ("severity", "action__order")
     list_select_related = ("action__stage__journey",)
+    autocomplete_fields = ("action",)
     search_fields = ("description", "action__action_description")
 
     def truncated_description(self, obj):

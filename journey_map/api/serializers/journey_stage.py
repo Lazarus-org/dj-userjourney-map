@@ -1,7 +1,8 @@
-from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
-from journey_map.models import JourneyStage, UserJourney
+from rest_framework import serializers
+
 from journey_map.api.serializers.journey_action import JourneyActionSerializer
+from journey_map.models import JourneyStage, UserJourney
 
 
 class JourneyStageSerializer(serializers.ModelSerializer):
@@ -28,7 +29,8 @@ class JourneyStageSerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "journey", "actions"]
 
     def validate_journey_id(self, value):
-        """Validate that the journey_id corresponds to an existing UserJourney."""
+        """Validate that the journey_id corresponds to an existing
+        UserJourney."""
         try:
             UserJourney.objects.get(id=value)
         except UserJourney.DoesNotExist:
@@ -44,7 +46,8 @@ class JourneyStageSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
-        """Update a JourneyStage instance, mapping journey_id to journey if provided."""
+        """Update a JourneyStage instance, mapping journey_id to journey if
+        provided."""
         journey_id = validated_data.pop("journey_id", None)
         if journey_id is not None:
             validated_data["journey"] = UserJourney.objects.get(id=journey_id)

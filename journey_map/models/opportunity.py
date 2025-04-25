@@ -5,9 +5,9 @@ from journey_map.models.journey_action import JourneyAction
 
 
 class Opportunity(models.Model):
-    """
-    Represents an opportunity for improvement tied to a specific action in the user journey.
-    Opportunities suggest ways to enhance the user experience.
+    """Represents an opportunity for improvement tied to a specific action in
+    the user journey. Opportunities suggest ways to enhance the user
+    experience.
 
     Attributes:
         action (JourneyAction): The action this opportunity relates to.
@@ -15,6 +15,7 @@ class Opportunity(models.Model):
 
     Example:
         An opportunity might be 'Add a tooltip to clarify the form field'.
+
     """
 
     action = models.ForeignKey(

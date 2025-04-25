@@ -1,10 +1,12 @@
 import django_filters
-from journey_map.models import PainPoint
 from django.utils.translation import gettext_lazy as _
+
+from journey_map.models import PainPoint
 
 
 class PainPointFilter(django_filters.FilterSet):
-    """FilterSet for the PainPoint model, allowing filtering by description, severity, and action."""
+    """FilterSet for the PainPoint model, allowing filtering by description,
+    severity, and action."""
 
     description = django_filters.CharFilter(
         lookup_expr="icontains",

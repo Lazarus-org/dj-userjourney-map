@@ -1,10 +1,12 @@
 import django_filters
-from journey_map.models import JourneyAction
 from django.utils.translation import gettext_lazy as _
+
+from journey_map.models import JourneyAction
 
 
 class JourneyActionFilter(django_filters.FilterSet):
-    """FilterSet for the JourneyAction model, allowing filtering by action description, touchpoint, stage, and order."""
+    """FilterSet for the JourneyAction model, allowing filtering by action
+    description, touchpoint, stage, and order."""
 
     action_description = django_filters.CharFilter(
         lookup_expr="icontains",
