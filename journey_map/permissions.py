@@ -11,6 +11,7 @@ class BasePermission:
 
     Raises:
         NotImplementedError: If `has_permission` is not implemented by a subclass.
+
     """
 
     def has_permission(self, request, view):
@@ -25,6 +26,7 @@ class BasePermission:
 
         Raises:
             NotImplementedError: If not implemented by a subclass.
+
         """
         raise NotImplementedError(
             f"{self.__class__.__name__} must implement `has_permission`."
@@ -43,6 +45,7 @@ class BasePermission:
 
         Returns:
             bool: True if permission is granted, False otherwise.
+
         """
         return self.has_permission(request, view)
 
@@ -50,8 +53,9 @@ class BasePermission:
 class AllowAny(BasePermission):
     """Allow access to all users, including unauthenticated users.
 
-    This permission class grants access to any request, making it suitable for
-    public views or read-only endpoints.
+    This permission class grants access to any request, making it
+    suitable for public views or read-only endpoints.
+
     """
 
     def has_permission(self, request, view):
@@ -63,6 +67,7 @@ class AllowAny(BasePermission):
 
         Returns:
             bool: Always True.
+
         """
         return True
 
@@ -76,6 +81,7 @@ class AllowAny(BasePermission):
 
         Returns:
             bool: Always True.
+
         """
         return True
 
@@ -83,9 +89,10 @@ class AllowAny(BasePermission):
 class IsAuthenticated(BasePermission):
     """Allow access only to authenticated users.
 
-    This permission class grants access to users who are logged in, denying
-    access to anonymous users. It is suitable for views that require user
-    authentication.
+    This permission class grants access to users who are logged in,
+    denying access to anonymous users. It is suitable for views that
+    require user authentication.
+
     """
 
     def has_permission(self, request, view):
@@ -97,6 +104,7 @@ class IsAuthenticated(BasePermission):
 
         Returns:
             bool: True if the user is authenticated, False otherwise.
+
         """
         return bool(
             request.user
@@ -117,6 +125,7 @@ class IsAuthenticated(BasePermission):
 
         Returns:
             bool: True if the user is authenticated, False otherwise.
+
         """
         return self.has_permission(request, view)
 
@@ -124,8 +133,10 @@ class IsAuthenticated(BasePermission):
 class IsAdminUser(BasePermission):
     """Allow access only to admin (staff) users.
 
-    This permission class grants access to users with `is_staff=True`, typically
-    administrators, denying access to non-staff users and anonymous users.
+    This permission class grants access to users with `is_staff=True`,
+    typically administrators, denying access to non-staff users and
+    anonymous users.
+
     """
 
     def has_permission(self, request, view):
@@ -137,6 +148,7 @@ class IsAdminUser(BasePermission):
 
         Returns:
             bool: True if the user is authenticated and has `is_staff=True`, False otherwise.
+
         """
         return bool(
             request.user
@@ -146,7 +158,8 @@ class IsAdminUser(BasePermission):
         )
 
     def has_object_permission(self, request, view, obj):
-        """Check if the user is authenticated and has staff status for object-level access.
+        """Check if the user is authenticated and has staff status for object-
+        level access.
 
         Delegates to `has_permission` by default, but can be overridden for
         object-specific checks.
@@ -158,6 +171,7 @@ class IsAdminUser(BasePermission):
 
         Returns:
             bool: True if the user is authenticated and has `is_staff=True`, False otherwise.
+
         """
         return self.has_permission(request, view)
 
@@ -165,9 +179,11 @@ class IsAdminUser(BasePermission):
 class IsSuperUser(BasePermission):
     """Allow access only to superuser accounts.
 
-    This permission class grants access to users with `is_superuser=True`,
-    typically reserved for high-level administrators, denying access to all
-    other users, including staff and anonymous users.
+    This permission class grants access to users with
+    `is_superuser=True`, typically reserved for high-level
+    administrators, denying access to all other users, including staff
+    and anonymous users.
+
     """
 
     def has_permission(self, request, view):
@@ -179,6 +195,7 @@ class IsSuperUser(BasePermission):
 
         Returns:
             bool: True if the user is authenticated and has `is_superuser=True`, False otherwise.
+
         """
         return bool(
             request.user
@@ -188,7 +205,8 @@ class IsSuperUser(BasePermission):
         )
 
     def has_object_permission(self, request, view, obj):
-        """Check if the user is authenticated and has superuser status for object-level access.
+        """Check if the user is authenticated and has superuser status for
+        object-level access.
 
         Delegates to `has_permission` by default, but can be overridden for
         object-specific checks.
@@ -200,5 +218,6 @@ class IsSuperUser(BasePermission):
 
         Returns:
             bool: True if the user is authenticated and has `is_superuser=True`, False otherwise.
+
         """
         return self.has_permission(request, view)
