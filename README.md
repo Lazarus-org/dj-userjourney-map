@@ -144,7 +144,7 @@ urlpatterns = [
     # User Persona related urls
     path("user_persona/", UserPersonaListView.as_view(), name="user-persona-list"), # Template View
     path("user_persona/api/", include("persona_manager.api.routers.main")),   # Only needed if using the API
-    
+
     # User Journey Map related urls
     path('journey_map/', include("journey_map.urls")), # List & Detail Template View
     path('journey_map/api/', include("journey_map.api.routers")) # Only needed if using the API
@@ -1015,81 +1015,81 @@ This section provides a detailed explanation of the available settings in the pa
 ## Admin Settings
 
 ### `JOURNEY_MAP_ADMIN_SITE_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Specifies a custom `AdminSite` class for the admin interface, enabling enhanced customization of the admin panel.
 
 ---
 
 ### `JOURNEY_MAP_ADMIN_HAS_ADD_PERMISSION`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Determines whether users have permission to add new records in the admin panel.
 
 ---
 
 ### `JOURNEY_MAP_ADMIN_HAS_CHANGE_PERMISSION`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Controls whether users can modify existing records in the admin panel.
 
 ---
 
 ### `JOURNEY_MAP_ADMIN_HAS_DELETE_PERMISSION`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Specifies whether users have permission to delete records in the admin panel.
 
 ---
 
 ### `JOURNEY_MAP_ADMIN_HAS_MODULE_PERMISSION`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Determines whether users have module-level permissions in the admin panel.
 
 ---
 
 ### `JOURNEY_MAP_ADMIN_INCLUDE_INLINES`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Controls whether inline forms (e.g., `JourneyStageInline`, `JourneyActionInline`) are included in the admin interface.
 
 ---
 
 ### `JOURNEY_MAP_ADMIN_INLINE_HAS_ADD_PERMISSION`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Determines whether users can add new inline records in the admin panel.
 
 ---
 
 ### `JOURNEY_MAP_ADMIN_INLINE_HAS_CHANGE_PERMISSION`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Controls whether users can modify existing inline records in the admin panel.
 
 ---
 
 ### `JOURNEY_MAP_ADMIN_INLINE_HAS_DELETE_PERMISSION`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Specifies whether users can delete inline records in the admin panel.
 
@@ -1098,27 +1098,27 @@ This section provides a detailed explanation of the available settings in the pa
 ## Throttle Settings
 
 ### `JOURNEY_MAP_BASE_USER_THROTTLE_RATE`
-**Type**: `str`  
+**Type**: `str`
 
-**Default**: `"30/minute"`  
+**Default**: `"30/minute"`
 
 **Description**: Defines the API request throttle rate for regular users (requests per time unit).
 
 ---
 
 ### `JOURNEY_MAP_STAFF_USER_THROTTLE_RATE`
-**Type**: `str`  
+**Type**: `str`
 
-**Default**: `"100/minute"`  
+**Default**: `"100/minute"`
 
 **Description**: Defines the API request throttle rate for staff users (requests per time unit).
 
 ---
 
 ### `JOURNEY_MAP_API_THROTTLE_CLASSES`
-**Type**: `str`  
+**Type**: `str`
 
-**Default**: `"journey_map.api.throttlings.RoleBasedUserRateThrottle"`  
+**Default**: `"journey_map.api.throttlings.RoleBasedUserRateThrottle"`
 
 **Description**: Specifies the throttle class for API requests, enabling role-based rate limiting.
 
@@ -1127,34 +1127,34 @@ This section provides a detailed explanation of the available settings in the pa
 ## Global API Settings
 
 ### `JOURNEY_MAP_API_PAGINATION_CLASS`
-**Type**: `str`  
+**Type**: `str`
 
-**Default**: `"journey_map.api.paginations.DefaultLimitOffSetPagination"`  
+**Default**: `"journey_map.api.paginations.DefaultLimitOffSetPagination"`
 
 **Description**: Defines the pagination class for API responses, controlling how results are paginated.
 
 ---
 
 ### `JOURNEY_MAP_API_EXTRA_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Specifies additional permission classes for API access control, supplementing default permissions.
 
 ---
 
 ### `JOURNEY_MAP_API_PARSER_CLASSES`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**:  
+**Default**:
 ```python
 [
     "rest_framework.parsers.JSONParser",
     "rest_framework.parsers.MultiPartParser",
     "rest_framework.parsers.FormParser",
 ]
-```  
+```
 
 **Description**: Specifies parsers for handling different request data formats in API endpoints.
 
@@ -1163,81 +1163,81 @@ This section provides a detailed explanation of the available settings in the pa
 ## UserJourney API Settings
 
 ### `JOURNEY_MAP_API_USER_JOURNEY_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Defines the serializer class for `UserJourney` API responses, allowing customization of serialization.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_JOURNEY_ORDERING_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["created_at", "updated_at"]`  
+**Default**: `["created_at", "updated_at"]`
 
 **Description**: Specifies fields for ordering results in the `UserJourney` API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_JOURNEY_SEARCH_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["name", "description"]`  
+**Default**: `["name", "description"]`
 
 **Description**: Defines fields that can be searched within the `UserJourney` API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_JOURNEY_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Specifies the filter class for `UserJourney` API responses, enabling advanced filtering with `django-filter`.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_JOURNEY_ALLOW_LIST`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables listing of `UserJourney` resources via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_JOURNEY_ALLOW_RETRIEVE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows retrieving specific `UserJourney` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_JOURNEY_ALLOW_CREATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the creation of new `UserJourney` records via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_JOURNEY_ALLOW_UPDATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows updating existing `UserJourney` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_JOURNEY_ALLOW_DELETE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the deletion of `UserJourney` records via the API.
 
@@ -1246,81 +1246,81 @@ This section provides a detailed explanation of the available settings in the pa
 ## JourneyStage API Settings
 
 ### `JOURNEY_MAP_API_JOURNEY_STAGE_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Defines the serializer class for `JourneyStage` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_STAGE_ORDERING_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["order"]`  
+**Default**: `["order"]`
 
 **Description**: Specifies fields for ordering results in the `JourneyStage` API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_STAGE_SEARCH_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["stage_name", "journey__name"]`  
+**Default**: `["stage_name", "journey__name"]`
 
 **Description**: Defines fields that can be searched within the `JourneyStage` API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_STAGE_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Specifies the filter class for `JourneyStage` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_STAGE_ALLOW_LIST`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables listing of `JourneyStage` resources via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_STAGE_ALLOW_RETRIEVE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows retrieving specific `JourneyStage` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_STAGE_ALLOW_CREATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the creation of new `JourneyStage` records via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_STAGE_ALLOW_UPDATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows updating existing `JourneyStage` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_STAGE_ALLOW_DELETE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the deletion of `JourneyStage` records via the API.
 
@@ -1329,81 +1329,81 @@ This section provides a detailed explanation of the available settings in the pa
 ## JourneyAction API Settings
 
 ### `JOURNEY_MAP_API_JOURNEY_ACTION_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Defines the serializer class for `JourneyAction` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_ACTION_ORDERING_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["order"]`  
+**Default**: `["order"]`
 
 **Description**: Specifies fields for ordering results in the `JourneyAction` API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_ACTION_SEARCH_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["action_description", "touchpoint"]`  
+**Default**: `["action_description", "touchpoint"]`
 
 **Description**: Defines fields that can be searched within the `JourneyAction` API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_ACTION_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Specifies the filter class for `JourneyAction` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_ACTION_ALLOW_LIST`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables listing of `JourneyAction` resources via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_ACTION_ALLOW_RETRIEVE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows retrieving specific `JourneyAction` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_ACTION_ALLOW_CREATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the creation of new `JourneyAction` records via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_ACTION_ALLOW_UPDATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows updating existing `JourneyAction` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_JOURNEY_ACTION_ALLOW_DELETE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the deletion of `JourneyAction` records via the API.
 
@@ -1412,81 +1412,81 @@ This section provides a detailed explanation of the available settings in the pa
 ## UserFeedback API Settings
 
 ### `JOURNEY_MAP_API_USER_FEEDBACK_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Defines the serializer class for `UserFeedback` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_FEEDBACK_ORDERING_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["created_at", "intensity", "is_positive"]`  
+**Default**: `["created_at", "intensity", "is_positive"]`
 
 **Description**: Specifies fields for ordering results in the `UserFeedback` API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_FEEDBACK_SEARCH_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["feedback_text"]`  
+**Default**: `["feedback_text"]`
 
 **Description**: Defines fields that can be searched within the `UserFeedback` API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_FEEDBACK_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Specifies the filter class for `UserFeedback` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_FEEDBACK_ALLOW_LIST`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables listing of `UserFeedback` resources via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_FEEDBACK_ALLOW_RETRIEVE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows retrieving specific `UserFeedback` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_FEEDBACK_ALLOW_CREATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the creation of new `UserFeedback` records via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_FEEDBACK_ALLOW_UPDATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows updating existing `UserFeedback` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_USER_FEEDBACK_ALLOW_DELETE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the deletion of `UserFeedback` records via the API.
 
@@ -1495,81 +1495,81 @@ This section provides a detailed explanation of the available settings in the pa
 ## PainPoint API Settings
 
 ### `JOURNEY_MAP_API_PAIN_POINT_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Defines the serializer class for `PainPoint` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_PAIN_POINT_ORDERING_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["severity"]`  
+**Default**: `["severity"]`
 
 **Description**: Specifies fields for ordering results in the `PainPoint` API.
 
 ---
 
 ### `JOURNEY_MAP_API_PAIN_POINT_SEARCH_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["description"]`  
+**Default**: `["description"]`
 
 **Description**: Defines fields that can be searched within the `PainPoint` API.
 
 ---
 
 ### `JOURNEY_MAP_API_PAIN_POINT_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Specifies the filter class for `PainPoint` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_PAIN_POINT_ALLOW_LIST`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables listing of `PainPoint` resources via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_PAIN_POINT_ALLOW_RETRIEVE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows retrieving specific `PainPoint` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_PAIN_POINT_ALLOW_CREATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the creation of new `PainPoint` records via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_PAIN_POINT_ALLOW_UPDATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows updating existing `PainPoint` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_PAIN_POINT_ALLOW_DELETE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the deletion of `PainPoint` records via the API.
 
@@ -1578,81 +1578,81 @@ This section provides a detailed explanation of the available settings in the pa
 ## Opportunity API Settings
 
 ### `JOURNEY_MAP_API_OPPORTUNITY_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Defines the serializer class for `Opportunity` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_OPPORTUNITY_ORDERING_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["action__order"]`  
+**Default**: `["action__order"]`
 
 **Description**: Specifies fields for ordering results in the `Opportunity` API.
 
 ---
 
 ### `JOURNEY_MAP_API_OPPORTUNITY_SEARCH_FIELDS`
-**Type**: `List[str]`  
+**Type**: `List[str]`
 
-**Default**: `["description"]`  
+**Default**: `["description"]`
 
 **Description**: Defines fields that can be searched within the `Opportunity` API.
 
 ---
 
 ### `JOURNEY_MAP_API_OPPORTUNITY_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
-**Default**: `None`  
+**Default**: `None`
 
 **Description**: Specifies the filter class for `Opportunity` API responses.
 
 ---
 
 ### `JOURNEY_MAP_API_OPPORTUNITY_ALLOW_LIST`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables listing of `Opportunity` resources via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_OPPORTUNITY_ALLOW_RETRIEVE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows retrieving specific `Opportunity` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_OPPORTUNITY_ALLOW_CREATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the creation of new `Opportunity` records via the API.
 
 ---
 
 ### `JOURNEY_MAP_API_OPPORTUNITY_ALLOW_UPDATE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Allows updating existing `Opportunity` records through the API.
 
 ---
 
 ### `JOURNEY_MAP_API_OPPORTUNITY_ALLOW_DELETE`
-**Type**: `bool`  
+**Type**: `bool`
 
-**Default**: `True`  
+**Default**: `True`
 
 **Description**: Enables or disables the deletion of `Opportunity` records via the API.
 
@@ -1661,7 +1661,7 @@ This section provides a detailed explanation of the available settings in the pa
 ## Template View Settings
 
 ### `JOURNEY_MAP_VIEW_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
+**Type**: `Optional[str]`
 
 **Default**: `"journey_map.permissions.IsAuthenticated"`
 
@@ -1677,17 +1677,17 @@ This overview should help you understand and customize the settings for the `dj-
 
 These are all fields available for ordering, filtering, and searching in the `UserJourneyViewSet`:
 
-- **`id`**: Unique identifier of the user journey (orderable, filterable).  
+- **`id`**: Unique identifier of the user journey (orderable, filterable).
   - **Description**: An integer primary key for the journey record (e.g., `1`).
-- **`name`**: The name of the user journey (orderable, searchable, filterable).  
+- **`name`**: The name of the user journey (orderable, searchable, filterable).
   - **Description**: A string representing the journey’s title (e.g., `"New User Onboarding"`).
-- **`description`**: A detailed description of the journey (searchable, filterable).  
+- **`description`**: A detailed description of the journey (searchable, filterable).
   - **Description**: A text field providing context for the journey, nullable (e.g., `"Journey for new customer onboarding"` or `null`).
-- **`persona`**: The associated user persona (searchable via `persona__name`, filterable).  
+- **`persona`**: The associated user persona (searchable via `persona__name`, filterable).
   - **Description**: A foreign key to `UserPersona`, searchable by persona name (e.g., `"Sarah the Project Manager"`), nullable.
-- **`created_at`**: The timestamp when the journey was created (orderable, filterable).  
+- **`created_at`**: The timestamp when the journey was created (orderable, filterable).
   - **Description**: A datetime marking the creation time (e.g., `"2025-04-24T10:00:00+00:00"`).
-- **`updated_at`**: The timestamp when the journey was last updated (orderable, filterable).  
+- **`updated_at`**: The timestamp when the journey was last updated (orderable, filterable).
   - **Description**: A datetime marking the last modification time (e.g., `"2025-04-24T12:00:00+00:00"`).
 
 ---
@@ -1696,13 +1696,13 @@ These are all fields available for ordering, filtering, and searching in the `Us
 
 These are all fields available for ordering, filtering, and searching in the `JourneyStageViewSet`:
 
-- **`id`**: Unique identifier of the journey stage (orderable, filterable).  
+- **`id`**: Unique identifier of the journey stage (orderable, filterable).
   - **Description**: An integer primary key for the stage record (e.g., `1`).
-- **`journey`**: The associated user journey (searchable via `journey__name`, filterable).  
+- **`journey`**: The associated user journey (searchable via `journey__name`, filterable).
   - **Description**: A foreign key to `UserJourney`, searchable by journey name (e.g., `"New User Onboarding"`).
-- **`stage_name`**: The name of the stage (orderable, searchable, filterable).  
+- **`stage_name`**: The name of the stage (orderable, searchable, filterable).
   - **Description**: A string representing the stage’s title (e.g., `"Sign-up"`).
-- **`order`**: The position of the stage in the journey sequence (orderable, filterable).  
+- **`order`**: The position of the stage in the journey sequence (orderable, filterable).
   - **Description**: A positive integer indicating the stage’s order (e.g., `1`).
 
 ---
@@ -1711,15 +1711,15 @@ These are all fields available for ordering, filtering, and searching in the `Jo
 
 These are all fields available for ordering, filtering, and searching in the `JourneyActionViewSet`:
 
-- **`id`**: Unique identifier of the journey action (orderable, filterable).  
+- **`id`**: Unique identifier of the journey action (orderable, filterable).
   - **Description**: An integer primary key for the action record (e.g., `1`).
-- **`stage`**: The associated journey stage (searchable via `stage__stage_name`, filterable).  
+- **`stage`**: The associated journey stage (searchable via `stage__stage_name`, filterable).
   - **Description**: A foreign key to `JourneyStage`, searchable by stage name (e.g., `"Sign-up"`).
-- **`action_description`**: A description of the user’s action (searchable, filterable).  
+- **`action_description`**: A description of the user’s action (searchable, filterable).
   - **Description**: A text field detailing the action (e.g., `"Complete registration form"`).
-- **`touchpoint`**: The point of interaction (searchable, filterable).  
+- **`touchpoint`**: The point of interaction (searchable, filterable).
   - **Description**: A string identifying the interaction point, nullable (e.g., `"Website"` or `null`).
-- **`order`**: The position of the action in the stage sequence (orderable, filterable).  
+- **`order`**: The position of the action in the stage sequence (orderable, filterable).
   - **Description**: A positive integer indicating the action’s order (e.g., `1`).
 
 ---
@@ -1728,19 +1728,19 @@ These are all fields available for ordering, filtering, and searching in the `Jo
 
 These are all fields available for ordering, filtering, and searching in the `UserFeedbackViewSet`:
 
-- **`id`**: Unique identifier of the user feedback (orderable, filterable).  
+- **`id`**: Unique identifier of the user feedback (orderable, filterable).
   - **Description**: An integer primary key for the feedback record (e.g., `1`).
-- **`action`**: The associated journey action (searchable via `action__action_description`, filterable).  
+- **`action`**: The associated journey action (searchable via `action__action_description`, filterable).
   - **Description**: A foreign key to `JourneyAction`, searchable by action description (e.g., `"Complete registration form"`).
-- **`feedback_text`**: The user’s feedback or emotional description (searchable, filterable).  
+- **`feedback_text`**: The user’s feedback or emotional description (searchable, filterable).
   - **Description**: A text field capturing the feedback (e.g., `"Form was easy to use"`).
-- **`emotion`**: The user’s emotional state (orderable, filterable).  
+- **`emotion`**: The user’s emotional state (orderable, filterable).
   - **Description**: A string from `EmotionChoices` (e.g., `"Happy"`, `"Frustrated"`).
-- **`intensity`**: The strength of the emotion (orderable, filterable).  
+- **`intensity`**: The strength of the emotion (orderable, filterable).
   - **Description**: An integer on a 1-5 scale (e.g., `4`).
-- **`is_positive`**: Indicates if the feedback is positive or negative (orderable, filterable).  
+- **`is_positive`**: Indicates if the feedback is positive or negative (orderable, filterable).
   - **Description**: A boolean value (e.g., `True` for positive, `False` for negative).
-- **`created_at`**: The timestamp when the feedback was created (orderable, filterable).  
+- **`created_at`**: The timestamp when the feedback was created (orderable, filterable).
   - **Description**: A datetime marking the creation time (e.g., `"2025-04-24T10:30:00+00:00"`).
 
 ---
@@ -1749,13 +1749,13 @@ These are all fields available for ordering, filtering, and searching in the `Us
 
 These are all fields available for ordering, filtering, and searching in the `PainPointViewSet`:
 
-- **`id`**: Unique identifier of the pain point (orderable, filterable).  
+- **`id`**: Unique identifier of the pain point (orderable, filterable).
   - **Description**: An integer primary key for the pain point record (e.g., `1`).
-- **`action`**: The associated journey action (searchable via `action__action_description`, filterable).  
+- **`action`**: The associated journey action (searchable via `action__action_description`, filterable).
   - **Description**: A foreign key to `JourneyAction`, searchable by action description (e.g., `"Complete registration form"`).
-- **`description`**: A description of the issue (searchable, filterable).  
+- **`description`**: A description of the issue (searchable, filterable).
   - **Description**: A text field detailing the pain point (e.g., `"Unclear error message"`).
-- **`severity`**: The severity of the pain point (orderable, filterable).  
+- **`severity`**: The severity of the pain point (orderable, filterable).
   - **Description**: An integer on a 1-5 scale (e.g., `3`).
 
 ---
@@ -1764,11 +1764,11 @@ These are all fields available for ordering, filtering, and searching in the `Pa
 
 These are all fields available for ordering, filtering, and searching in the `OpportunityViewSet`:
 
-- **`id`**: Unique identifier of the opportunity (orderable, filterable).  
+- **`id`**: Unique identifier of the opportunity (orderable, filterable).
   - **Description**: An integer primary key for the opportunity record (e.g., `1`).
-- **`action`**: The associated journey action (searchable via `action__action_description`, filterable, orderable via `action__order`).  
+- **`action`**: The associated journey action (searchable via `action__action_description`, filterable, orderable via `action__order`).
   - **Description**: A foreign key to `JourneyAction`, searchable by action description (e.g., `"Complete registration form"`) and orderable by action order.
-- **`description`**: A description of the suggested improvement (searchable, filterable).  
+- **`description`**: A description of the suggested improvement (searchable, filterable).
   - **Description**: A text field detailing the opportunity (e.g., `"Add tooltips for form fields"`).
 
 ----
