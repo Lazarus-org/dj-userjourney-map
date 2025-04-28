@@ -6,7 +6,7 @@ requires = [ "poetry-core>=2,<3" ]
 [project]
 name = "dj-userjourney-map"
 version = "1.0.0"
-description = ""
+description = "A Django package to simplify the creation, management, and visualization of user journey maps in Django applications."
 readme = "README.md"
 keywords = [ "django", "django user journey map", "journey", "journey map", "journeymap", "user" ]
 
