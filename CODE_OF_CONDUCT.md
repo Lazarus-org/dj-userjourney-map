@@ -1,13 +1,13 @@
 ## Code of Conduct for Contributing to Django APIKey Auth
 
-we’re thrilled that you want to contribute to `dj-apikey-auth`! to ensure a positive and protective environment for everyone involved, please adhere to the following guidelines.
+we’re thrilled that you want to contribute to `dj-userjourney-map`! to ensure a positive and protective environment for everyone involved, please adhere to the following guidelines.
 
 ## Contribution Workflow
 
-1. **Fork and Clone**: Start by forking the `dj-apikey-auth` repository on Github and cloning it to your local machine:
+1. **Fork and Clone**: Start by forking the `dj-userjourney-map` repository on Github and cloning it to your local machine:
     ```bash
-    git clone https://github.com/lazarus-org/dj-apikey-auth.git
-    cd dj-apikey-auth
+    git clone https://github.com/lazarus-org/dj-userjourney-map.git
+    cd dj-userjourney-map
     ```
 
 2. **Create a Branch**: Create a new branch for your feature or bugfix:
@@ -184,4 +184,4 @@ perf(parser): enhance parsing speed
 - Added benchmarks to track performance improvements
 ```
 
-Thank you for contributing to `dj-apikey-auth`! We look forward to your contributions.
+Thank you for contributing to `dj-userjourney-map`! We look forward to your contributions.

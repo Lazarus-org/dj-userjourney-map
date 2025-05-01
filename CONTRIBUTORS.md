@@ -1,6 +1,6 @@
 # Contributors
 
-We would like to thank the following people for their contributions to the `dj-apikey-auth` project:
+We would like to thank the following people for their contributions to the `dj-userjourney-map` project:
 
 ## Core Contributors
 

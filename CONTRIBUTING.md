@@ -1,7 +1,7 @@
 # Contributing to Django APIKey Auth
 
 
-We’re excited that you’re interested in contributing to `dj-apikey-auth`! Whether you’re fixing a bug, adding a feature, or improving the project, your help is appreciated.
+We’re excited that you’re interested in contributing to `dj-userjourney-map`! Whether you’re fixing a bug, adding a feature, or improving the project, your help is appreciated.
 
 ## Overview
 
@@ -19,15 +19,15 @@ We’re excited that you’re interested in contributing to `dj-apikey-auth`! Wh
 
 1. **Fork the Repository:**
 
-   Begin by forking the `dj-apikey-auth` repository on GitHub. This creates your own copy where you can make changes.
+   Begin by forking the `dj-userjourney-map` repository on GitHub. This creates your own copy where you can make changes.
 
 2. **Clone Your Fork:**
 
    Use the following command to clone your fork locally:
 
    ```bash
-   git clone https://github.com/your-username/dj-apikey-auth.git
-   cd dj-apikey-auth
+   git clone https://github.com/your-username/dj-userjourney-map.git
+   cd dj-userjourney-map
    ```
 
 3. **Install Dependencies:**
@@ -148,4 +148,4 @@ Here are some additional resources that might be helpful:
 
 ---
 
-Thank you for your interest in contributing to `dj-apikey-auth`! We look forward to your contributions.
+Thank you for your interest in contributing to `dj-userjourney-map`! We look forward to your contributions.
