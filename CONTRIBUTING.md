@@ -1,4 +1,4 @@
-# Contributing to Django APIKey Auth
+# Contributing to Django UserJourney Map
 
 
 We’re excited that you’re interested in contributing to `dj-userjourney-map`! Whether you’re fixing a bug, adding a feature, or improving the project, your help is appreciated.
@@ -68,7 +68,7 @@ Maintaining a consistent code style is crucial. We use `black` for code formatti
 For linting, `pylint` is used to enforce style and catch potential errors:
 
    ```bash
-   poetry run pylint apikey_auth
+   poetry run pylint journey_map
    ```
 
 ## Utilizing Pre-commit Hooks
@@ -117,7 +117,7 @@ Once your changes are ready, follow these steps to submit them:
 
 3. **Open a Pull Request:**
 
-   Go to the original `dj-apikey-auth` repository and open a pull request. Include a detailed description of your changes and link any related issues.
+   Go to the original `dj-userjourney-map` repository and open a pull request. Include a detailed description of your changes and link any related issues.
 
 4. **Respond to Feedback:**
 
@@ -129,7 +129,7 @@ Found a bug or have a feature request? We’d love to hear from you!
 
 1. **Open an Issue:**
 
-   Head over to the `Issues` section of the `dj-apikey-auth` repository and click "New Issue".
+   Head over to the `Issues` section of the `dj-userjourney-map` repository and click "New Issue".
 
 2. **Describe the Problem:**
 

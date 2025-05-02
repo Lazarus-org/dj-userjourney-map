@@ -1,4 +1,4 @@
-## Code of Conduct for Contributing to Django APIKey Auth
+## Code of Conduct for Contributing to Django UserJourney Map
 
 we’re thrilled that you want to contribute to `dj-userjourney-map`! to ensure a positive and protective environment for everyone involved, please adhere to the following guidelines.
 
@@ -26,7 +26,7 @@ we’re thrilled that you want to contribute to `dj-userjourney-map`! to ensure 
     ```
 5. **Run Code Quality Checks**: Ensure code quality with Pylint:
     ```bash
-    poetry run pylint apikey_auth
+    poetry run pylint journey_map
     ```
 
 6. **Commit Your Changes**: Use Commitizen to commit your changes according to the Conventional Commits specification:
